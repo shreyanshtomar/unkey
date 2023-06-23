@@ -86,6 +86,13 @@
                     ]
                 }
             ]
+        },
+        {
+            "group": "Contributing",
+            "icon": "code",
+            "pages": [
+                "contributing/get-started"
+            ]
         }
     ],
     "footerSocials": {
