@@ -1,4 +1,3 @@
-import { Particles } from "@/components/dashboard/particles";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
@@ -10,7 +9,7 @@ export default function AuthLayout(props: { children: React.ReactNode }) {
   }
   return (
     <>
-      <div className="grid grid-cols-1  h-screen place-items-center bg-white">
+      <div className="grid h-screen grid-cols-1 bg-white place-items-center">
         <div className="container">{props.children}</div>
       </div>
     </>
