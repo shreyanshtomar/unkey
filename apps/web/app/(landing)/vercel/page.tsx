@@ -26,7 +26,7 @@ export default function Example() {
             </Link>
             <Link
               href="/todo"
-              className="rounded-md border border-primary bg-primary px-3.5 py-1.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-secondary hover:text-secondary-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="rounded-md border border-primary bg-secondary px-3.5 py-1.5 text-sm font-semibold text-secondary-foreground shadow-sm hover:bg-primary hover:text-primary-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Read our integration docs
             </Link>
