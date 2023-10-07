@@ -5,10 +5,9 @@ import {
   getVerificationsPerHourForAllWorkspaces,
 } from "@/lib/tinybird";
 import { verifySignature } from "@upstash/qstash/nextjs";
-import { NextApiRequest, NextApiResponse } from "next";
 import Stripe from "stripe";
 
-async function handler(_req: NextApiRequest, res: NextApiResponse) {
+async function handler(_req: Request) {
   try {
     const e = stripeEnv();
     if (!e) {
@@ -113,21 +112,25 @@ async function handler(_req: NextApiRequest, res: NextApiResponse) {
       await fetch(env().UPTIME_CRON_URL_COLLECT_BILLING!);
     }
 
-    res.send("OK");
+    return new Response('ok', {
+      status: 200
+    });
   } catch (err) {
-    res.status(500);
     if (err instanceof Error) {
       console.error(err.message);
-      res.send(err.message);
+      return new Response(err.message, {
+        status: 500
+      });
     } else {
-      res.send("Shit broke");
+      return new Response("Shit Broke", {
+        status: 500
+      });
     }
-  } finally {
-    res.end();
   }
 }
-
-export const POST = process.env.NODE_ENV === "production" ? verifySignature(handler) : handler;
+// @ts-ignore: QStash sucks... Apparently? 
+// These docs are a lie https://upstash.com/docs/qstash/quickstarts/vercel-nextjs
+export const POST = verifySignature(handler);
 
 /**
  *
